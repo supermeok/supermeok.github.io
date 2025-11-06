@@ -140,7 +140,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-11-02T11:05:02.000Z">
-<meta property="article:modified_time" content="2025-11-02T11:49:18.972Z">
+<meta property="article:modified_time" content="2025-11-06T11:10:28.636Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
@@ -372,8 +372,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-11-02 19:49:18</span>
-            <span class="mobile">2025-11-02 19:49:18</span>
+            <span class="desktop">2025-11-06 19:10:28</span>
+            <span class="mobile">2025-11-06 19:10:28</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -416,13 +416,53 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>什么是 Agent？从「AI 工具」到「智能伙伴」的进化<br>如果你关注 AI 领域，最近一定常听到 “Agent” 这个词 —— 有人说它是 “下一代 AI 形态”，有人说它能 “自动完成复杂任务”。但到底什么是 Agent？它和我们平时用的 ChatGPT、AI 画图工具又有什么区别？今天就用通俗的语言，带你搞懂 Agent 的核心逻辑。</p>
+			<blockquote>
+<p>最近在 AI 领域，频率出现agent这个概念，有人说它是 “下一代 AI 形态”，那但到底什么是 Agent，和我们平时用的大模型有什么联系? 本文带你理清 Agent 的核心逻辑，并介绍开发Agent常用的工具。</p>
+</blockquote>
+<h2 id="AI-Agent基础概念"><a href="#AI-Agent基础概念" class="headerlink" title="AI Agent基础概念"></a>AI Agent基础概念</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>在第一次接触一个新事物时，想要理解并掌握它,首先应知道它的定义，《人工智能》一书中给出了Agent的宽泛定义：</p>
+<blockquote>
+<p>任何通过传感器（sensor）感知环境（environment）并通过执行器(actuator)作用于该环境的事物都可以被视作智能体</p>
+</blockquote>
+<p>比如：</p>
+<ul>
+<li>自动驾驶：通过传感器感知道路状况，自主决策加速、转弯或刹车</li>
+<li>AI助教：捕捉学生的发音，表达，提出意见</li>
+</ul>
+<p>Agent早在1997年就已提出，历经多轮发展和演变，它的关键就是能感知环境并做出响应，而如今爆火的 Agent，核心是 “基于大模型” 的智能体 ， 这也是它能成为 “下一代 AI 形态” 的关键。</p>
+<h3 id="基于LLM的agent"><a href="#基于LLM的agent" class="headerlink" title="基于LLM的agent"></a>基于LLM的agent</h3><p>首先要明确，大模型并不等同于Agent，我们平时使用的Deepseek,豆包，ChatGpt等大模型，交互多停留在 提问并回复的聊天页面。它们能理解需求、给出答案，但无法主动感知环境、执行跨平台操作 —— 比如你让大模型写邮件并发送，它做不到，但 Agent 可以。</p>
+<p>举个实际场景：<br>如果你想做一份生日派对策划</p>
+<ul>
+<li>用传统大模型：需手动分步引导，先问生日派对需要准备什么，再问 如何订蛋糕，接着确认邀请函设计模板，每一步都依赖人工触发。；</li>
+<li>用 Agent：你只需要说 :“帮我策划一场 10 人的生日派对，预算 2000 元，时间下周六”，它会自动完成所有步骤，最后给你一份完整的执行方案。</li>
+</ul>
+<p>如今爆火的Agent,是基于LLM(Large Language Model)的智能体，智能体技术演变的最新阶段 。得益于LLM的快速发展，在规划、推理、知识获取等方面的强大能力，同时与人类表现出有效的自然语言交互等优势，所以现在的Agent便是以LLM作为大脑，承担控制器的角色</p>
+<p>简单来说，Agent 是具备 “自主感知、决策、执行” 能力的 AI 系统，它不需要我们每一步都发指令，只要你给它一个明确目标，它就能自己规划步骤、调用资源、解决问题，甚至在过程中调整策略。</p>
+<h2 id="AI-Agent核心技术"><a href="#AI-Agent核心技术" class="headerlink" title="AI Agent核心技术"></a>AI Agent核心技术</h2><p>Agent通常由以下四个核心组件构成：</p>
+<blockquote>
+<p>Agent &#x3D; LLM + 记忆 (Memory)+ 任务规划(Planning) + 工具使用(Tools)</p>
+</blockquote>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/agent-overview.png"
+                      alt="agent 框架"
+                ></p>
+<p>四大核心组件</p>
 <ol>
-<li>先抛结论：Agent 不是 “新工具”，而是 “能自主干活的智能体”<br>简单来说，Agent 是具备 “自主感知、决策、执行” 能力的 AI 系统—— 它不需要人类每一步都发指令，只要你给它一个明确目标，它就能自己规划步骤、调用资源、解决问题，甚至在过程中调整策略。<br>比如你说 “帮我完成下周的出差准备”：<br>普通 AI 工具可能只会给你列一个 “出差清单”（被动响应）；<br>而 Agent 会先查你目的地的天气（感知环境），结合你的行程表订符合预算的酒店和机票（决策规划），同步把行程同步到你家人的日历（执行），如果出发前航班延误，还会自动改订并通知你（反馈调整）。<br>行业里对 Agent 的定义更严谨些，斯坦福 HAI（人工智能研究所）曾提出：“Agent 是能在环境中自主行动，以实现特定目标的实体”。核心关键词就是 <strong>“自主”</strong> 和 <strong>“目标驱动”</strong> —— 它不是 “你问我答” 的工具，而是 “你说目标，我来搞定” 的伙伴。</li>
-<li>Agent 的核心能力：要满足这 4 点，才算 “真 Agent”<br>不是所有 AI 都能叫 Agent，真正的 Agent 必须具备 4 个关键特征，少一个都差点意思：<br>（1）环境感知：能 “看懂” 周围的信息<br>Agent 首先得有 “感官”，能主动获取外部数据 —— 比如读取你的日程表、监测设备运行数据、抓取网页信息、甚至通过传感器感知物理世界（如自动驾驶 Agent 的摄像头）。<br>举个例子：智能理财 Agent 会实时抓取股市行情、你的账户余额、甚至宏观经济新闻（如央行利率调整），这些都是它感知环境的过程。<br>（2）目标拆解：能把 “大任务” 拆成 “小步骤”<br>拿到目标后，Agent 要会 “思考怎么做”。比如你说 “帮我写一篇产品推广稿并发布到 3 个平台”，它会拆成：<br>① 先查产品核心卖点（调用产品文档）；② 确定推广稿风格（结合目标用户画像）；③ 撰写初稿并自查错别字；④ 适配不同平台格式（公众号长文、小红书短文案、微博短句）；⑤ 定时发布并记录数据。<br>这个 “拆解规划” 的能力，是 Agent 和普通 AI 的核心区别。<br>（3）执行与反馈：能 “动手”，还能 “纠错”<br>Agent 不是 “空想家”，它得有 “执行能力”—— 比如自动发送邮件、修改表格数据、调用其他工具（如用 AI 画图工具生成推广图）。更重要的是，它能根据结果调整策略：<br>如果推广稿发布后，小红书的阅读量很低，Agent 会分析原因（比如标题不够吸引、配图不合适），然后优化内容重新发布。<br>（4）持续学习：能 “越用越聪明”<br>优秀的 Agent 会 “积累经验”—— 比如你常用它订咖啡，它会记住你喜欢 “无糖冰美式”“周一到周五上午 9 点下单”；如果你是设计师，它会逐渐掌握你偏好的配色风格，后续生成的初稿会越来越贴近你的需求。<br>这种 “不需要人工重新训练，就能自主优化” 的能力，让 Agent 越来越 “懂你”。</li>
-<li>别搞混！Agent 和传统 AI 的 3 个关键差异<br>很多人会把 Agent 和 ChatGPT、AI 画图工具归为一类，但其实它们的定位完全不同。用一张表就能看明白：<br>对比维度<br>传统 AI（如 ChatGPT、MidJourney）<br>Agent（如智能日程 Agent、企业客服 Agent）<br>交互模式<br>被动响应：你问一句，它答一句<br>主动推进：你给目标，它全程跟进<br>任务范围<br>单一功能：专注 “聊天”“画图” 等<br>多任务协同：能整合多个工具完成复杂目标<br>决策能力<br>无自主决策：完全依赖你的指令<br>有自主决策：能根据环境调整策略</li>
+<li><strong>LLM</strong>：提供核心的语言理解、推理与生成能力，是整个Agent的“大脑”、控制器。</li>
+<li><strong>任务规划</strong>：对复杂任务借助大模型进行分解、规划和调度，如著名的Chain-of-thought, React等方式，及时观察子任务执行的结果与反馈，对任务及时调整。</li>
+<li><strong>工具使用</strong>：让大模型能感知环境，并作用于环境。根据决策结果执行具体的动作或指令,与外部工具进行交互，不在局限于聊天窗口，如主动查看日历，运行代码，网页搜索等</li>
+<li><strong>记忆</strong>：让大模型能长期学习，存储经验和知识。作为“存储器”，存储短期的记忆（如一次任务过程中的多次人类交互）或长期记忆（如记录使用者的任务历史、个人信息、兴趣便好等）</li>
 </ol>
-<p>举个实际场景：如果你想 “用 AI 做一份生日派对策划”——<br>用传统 AI：你得先问 “生日派对需要准备什么”，再问 “如何订蛋糕”，接着问 “怎么设计邀请函”，每一步都要手动引导；<br>用 Agent：你只需要说 “帮我策划一场 10 人的生日派对，预算 2000 元，时间下周六”，它会自动完成所有步骤，最后给你一份完整的执行方案。<br>4.  Agent 已经在用了！这些场景你可能早就接触过<br>别觉得 Agent 很遥远，其实它已经悄悄出现在我们的生活和工作中：<br>（1）个人生活：你的 “智能管家”<br>智能日程 Agent：比如苹果的 “智能日程建议” 升级版（未来形态），能自动整合你的邮件、会议邀请、待办清单，帮你避开 “上午开会 + 下午赶报告” 的冲突，甚至提醒你 “明天要见客户，记得准备资料”；<br>健康管理 Agent：连接你的运动手环和体检报告，自动生成每日饮食建议，如果你连续 3 天睡眠不足，会推荐助眠音乐并调整第二天的闹钟时间。<br>（2）企业工作：效率提升 “神器”<br>客户服务 Agent：不再是 “机械回复关键词”，而是能自主判断客户需求 —— 比如客户说 “我的订单还没到”，Agent 会自动查物流信息、判断延误原因，如果是快递问题，会直接联系快递公司跟进，同时给客户发补偿券；<br>供应链 Agent：在工厂里，能实时监测原材料库存，当库存低于阈值时，自动向供应商下单，还会结合生产计划调整到货时间，避免原材料积压或短缺。<br>（3）专业领域：突破人类 “能力边界”<br>科研 Agent：比如药物研发中，Agent 能自主筛选海量化合物数据，预测哪些化合物可能对某种疾病有效，再把结果交给科学家验证，大幅缩短研发周期；<br>自动驾驶 Agent：这是最典型的 Agent 场景 —— 汽车通过传感器感知路况（行人、红绿灯、其他车辆），自主决策 “加速”“刹车”“变道”，全程不需要人类干预。<br>5. 未来的 Agent：会更 “聪明”，但也有挑战<br>Agent 的发展方向很明确：更懂人类、更会协同、更安全。但也有需要解决的问题：<br>（1）好的方向：从 “单 Agent” 到 “多 Agent 协同”<br>未来不会是 “一个 Agent 干所有事”，而是多个 Agent 配合工作。比如 “智慧家庭” 场景：<br>当你下班回家，“门锁 Agent” 识别你的指纹后，自动通知 “灯光 Agent” 打开客厅灯，“空调 Agent” 调到 26℃，“厨房 Agent” 开始预热你早上准备好的食材 —— 多个 Agent 协同，实现 “无感智能”。<br>（2）要警惕的问题：伦理与安全<br>决策透明性：如果招聘 Agent 筛选简历时淘汰了某个人，原因是 “AI 认为不符合企业文化”，但这个判断的依据是什么？需要让 Agent 的决策可追溯，避免 “黑箱操作”；<br>数据隐私：健康管理 Agent 需要获取你的医疗数据，如何保证这些数据不被泄露或滥用？这需要技术和法规共同发力。<br>最后：Agent 的本质是 “AI 的进化”<br>总结一下：Agent 不是 “新发明”，而是 AI 从 “工具” 到 “伙伴” 的进化 —— 它不再需要人类手把手指导，而是能主动理解目标、解决问题、创造价值。<br>未来，我们可能会拥有 “个人专属 Agent”：帮你处理工作琐事、规划生活、甚至辅助你做决策。但无论 Agent 多聪明，它的核心始终是 “服务人类”—— 毕竟，技术的终极意义，是让我们的生活更轻松、更有价值。</p>
+<p>后面的文章会详细介绍每一个组件的详细信息</p>
+<h2 id="OpenAI-SDK框架"><a href="#OpenAI-SDK框架" class="headerlink" title="OpenAI SDK框架"></a>OpenAI SDK框架</h2><p>OpenAI SDK 是开发Agent最常用的工具之一。它封装了 OpenAI 大模型的核心能力，简化了 “记忆管理、任务规划、工具调用” 的开发流程，让开发者无需关注底层逻辑，就能快速搭建 Agent 原型，且无需本地下载大模型，只需api_key就可以进行快速开发。</p>
+<p>首先得安装openai</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果运行失败，您可以将pip替换成pip3再运行</span></span><br><span class="line">pip install -U openai</span><br></pre></td></tr></table></figure></div>
+
+<p>下面是使用openai 接入qwen2.5-72b-instruct的例子，api_key直接去阿里的<a class="link"   target="_blank" rel="noopener" href="https://bailian.console.aliyun.com/?spm=5176.29597918.J_SEsSjsNv72yRuRFS2VknO.2.105c7b0891vQZy&tab=api#/api" >百炼<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>注册账号获取即可，优点是新人可以免费使用2个月，也可以去deepseek官网充值获取，api_key可以新建一个.env文件进行保存</p>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> openai <span class="keyword">import</span> OpenAI</span><br><span class="line"></span><br><span class="line">client = OpenAI(</span><br><span class="line">    <span class="comment"># 若没有配置环境变量，请用百炼API Key将下行替换为：api_key=&quot;sk-xxx&quot;,</span></span><br><span class="line">    api_key=os.getenv(<span class="string">&quot;DASHSCOPE_API_KEY&quot;</span>),</span><br><span class="line">    base_url=<span class="string">&quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;</span>,</span><br><span class="line">)</span><br><span class="line">completion = client.chat.completions.create(</span><br><span class="line">    model=<span class="string">&quot;qwen2.5-72b-instruct&quot;</span>,</span><br><span class="line">    messages=[</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;You are a helpful assistant.&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;你是谁？&quot;</span>&#125;,</span><br><span class="line">    ],</span><br><span class="line">    stream=<span class="literal">True</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">for</span> chunk <span class="keyword">in</span> completion:</span><br><span class="line">    <span class="built_in">print</span>(chunk.choices[<span class="number">0</span>].delta.content, end=<span class="string">&quot;&quot;</span>, flush=<span class="literal">True</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>运行后模型输出:我是Qwen，由阿里云开发的超大规模语言模型。我被设计用于生成各种文本，如文章、故事、诗歌等，并能根据不同的场景和需求进行对话、提供信息或帮助解决问题。很高兴为您服务！如果您有任何问题或需要帮助，请随时告诉我.</p>
 
 		</div>
 
@@ -437,7 +477,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-11-02 19:49:18
+                    :</strong> 2025-11-06 19:10:28
             </li>
         
         <li>
@@ -533,7 +573,7 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">Agent是什么</div>
-		
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AI-Agent%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="nav-text">AI Agent基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8ELLM%E7%9A%84agent"><span class="nav-text">基于LLM的agent</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AI-Agent%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF"><span class="nav-text">AI Agent核心技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenAI-SDK%E6%A1%86%E6%9E%B6"><span class="nav-text">OpenAI SDK框架</span></a></li></ol>
 
 	</div>
 </div>
